@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Vision Sensor — Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,600;0,700;0,800;1,300;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside>
+    <div class="aside-top">
+      <div class="kicker">VEX V5 System</div>
+      <h1>AI Vision<br>Sensor</h1>
+      <div class="version">docs / v1.0.0</div>
+    </div>
+
+    <div class="nav-label">Contents</div>
+    <nav>
+      <a href="#init" class="active"><span class="num">01</span> Initialization</a>
+      <a href="#config"><span class="num">02</span> Configuring</a>
+      <a href="#application"><span class="num">03</span> Application</a>
+      <a href="#api"><span class="num">04</span> Useful Functions</a>
+      <a href="#full-api"><span class="num">05</span> Full API</a>
+    </nav>
+
+    <div class="aside-footer">
+      Robot Revolution
+    </div>
+  </aside>
+
+  <main>
+
+    <div class="hero">
+      <div class="eyebrow">Technical Reference</div>
+      <h2>AI Vision<br><em>Sensor</em></h2>
+      <div class="hero-rule"></div>
+      <p>Setup, configuration, and API documentation for the VEX V5 AI Vision Sensor — covering initialization, Brain/VS Code/VEXcode environments, and object detection.</p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="label">Platform</span>
+          <span class="val">VEX V5</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Language</span>
+          <span class="val">C++</span>
+        </div>
+        <div class="meta-item">
+          <span class="label">Detection</span>
+          <span class="val">AprilTag + Object</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section fade-up" id="init">
+      <div class="section-header">
+        <div class="section-num-big">01</div>
+        <div class="section-title-block">
+          <span class="section-label">Getting Started</span>
+          <h2>Initialization</h2>
+        </div>
+      </div>
+
+      <p>Initialization of the AI Vision Sensor is straightforward. Declare it wherever you initialize your motors — the same scope, same location.</p>
+
+      <div class="code-block">
+        <div class="code-meta">
+          <span class="code-lang-label">C++</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="cm">// Replace PORT1 with the port your AI Vision is plugged into</span>
+<span class="ty">aivision</span> AiVision = <span class="fn">aivision</span>(<span class="pt">PORT1</span>);</code></pre>
+      </div>
+
+      <div class="callout">
+        <p>Declare the <code class="inline">aivision</code> object at the top of your project alongside all other device declarations for consistent, readable code.</p>
+      </div>
+    </section>
+
+    <section class="section fade-up" id="config">
+      <div class="section-header">
+        <div class="section-num-big">02</div>
+        <div class="section-title-block">
+          <span class="section-label">Setup</span>
+          <h2>Configuring</h2>
+        </div>
+      </div>
+
+      <p>Three environments let you configure the sensor. Each has a different capability level.</p>
+
+      <div class="config-grid">
+        <div class="config-col">
+          <div class="col-label">Option A</div>
+          <div class="col-title">Brain</div>
+          <p>Go to Devices and tap the sensor. Toggle between Image mode (rectangles on a graph) and Objects mode (live picture).</p>
+          <span class="badge badge-amber">Alternative</span>
+        </div>
+        <div class="config-col">
+          <div class="col-label">Option B</div>
+          <div class="col-title">VS Code</div>
+          <p>Simple and effective — capture screenshots directly from the sensor while plugged in. Great for quick checks and verification.</p>
+          <span class="badge badge-green">Recommended</span>
+        </div>
+        <div class="config-col">
+          <div class="col-label">Option C</div>
+          <div class="col-title">VEXcode</div>
+          <p>Most intuitive. Live video feed so you see exactly what the sensor sees in real time.</p>
+          <span class="badge badge-red">Live Video</span>
+        </div>
+      </div>
+
+      <h3>From the Brain</h3>
+
+      <h4>Display modes</h4>
+      <ul class="doc-list">
+        <li><strong>Image mode</strong> — Graph view. Draws rectangles around detected objects as they appear.</li>
+        <li><strong>Objects mode</strong> — Shows a live picture from the sensor's current perspective.</li>
+      </ul>
+
+      <h4>Looking for April Tags</h4>
+      <ul class="doc-list">
+        <li>Tap <strong>"Object Color"</strong> repeatedly until it reads <strong>"Tags."</strong></li>
+        <li>Move the sensor around — it now detects only the April Tags pretrained on the device.</li>
+      </ul>
+
+      <h3>From VS Code</h3>
+      <div class="callout">
+        <p>In VS Code, capture a screenshot directly from the sensor while it is plugged into the computer. Quick and straightforward for verification purposes.</p>
+      </div>
+
+      <h3>From VEXcode</h3>
+      <ul class="doc-list">
+        <li>Provides a <strong>live video feed</strong> directly from the sensor.</li>
+        <li>Most straightforward method for setting up and verifying object detection signatures.</li>
+      </ul>
+    </section>
+
+    <section class="section fade-up" id="application">
+      <div class="section-header">
+        <div class="section-num-big">03</div>
+        <div class="section-title-block">
+          <span class="section-label">Usage</span>
+          <h2>Application</h2>
+        </div>
+      </div>
+
+      <div class="placeholder">
+        <div class="placeholder-num">+</div>
+        <div>
+          <h4>Content pending</h4>
+          <p>This section will cover real-world usage patterns, integration with autonomous and driver-control periods, and worked examples.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-up" id="api">
+      <div class="section-header">
+        <div class="section-num-big">04</div>
+        <div class="section-title-block">
+          <span class="section-label">Reference</span>
+          <h2>Useful Functions</h2>
+        </div>
+      </div>
+
+      <div class="placeholder">
+        <div class="placeholder-num">+</div>
+        <div>
+          <h4>Content pending</h4>
+          <p>The most commonly used aivision API functions with parameter descriptions and usage examples.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-up" id="full-api">
+      <div class="section-header">
+        <div class="section-num-big">05</div>
+        <div class="section-title-block">
+          <span class="section-label">Reference</span>
+          <h2>Full API</h2>
+        </div>
+      </div>
+
+      <div class="placeholder">
+        <div class="placeholder-num">+</div>
+        <div>
+          <h4>Content pending</h4>
+          <p>Complete class reference — all methods, return types, enumerations, and properties for the aivision class.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
